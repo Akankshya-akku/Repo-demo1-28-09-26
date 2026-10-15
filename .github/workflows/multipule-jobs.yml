@@ -1,0 +1,24 @@
+name: multipule job pratice
+
+on: push
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+    - name: build app
+      run: echo "building app"
+    
+test:
+ needs: build
+ runs-on: ubuntu-latest
+ steps:
+   - name: test app
+     run: echo "test app"
+
+deploy:
+  needs: test
+  runs-on: ubuntu-latest
+  steps:
+   - name: deploy app
+     run: echo "app deploy"
